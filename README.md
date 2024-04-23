@@ -1,1 +1,2 @@
-### This is the first part of the Rock Paper and Scissors Game
+### This is the second part of the Rock Paper and Scissors Game
+### Using JavaScript DOM

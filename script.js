@@ -29,27 +29,95 @@ function getComputerChoice() {
 function playGame() {
   var playerA = 0;
   var playerB = 0;
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Enter Choice");
+  var playerSelection = "";
+  var point = "";
+  var pointA = document.getElementById("pointA")
+  var pointB = document.getElementById("pointB")
+  var results = document.getElementById("results");
+
+  const rockButton = document.getElementById("rock");
+  rockButton.addEventListener("click", function () {
+    playerSelection = "Rock";
     const computerSelection = getComputerChoice();
-    //console.log(playRound(playerSelection, computerSelection));
-    var point = playRound(playerSelection, computerSelection);
+    point = playRound(playerSelection, computerSelection);
     if (point === "pointA") {
       playerA += 1;
+	  pointA.textContent = playerA;
       console.log("player:" + playerA);
     } else if (point === "pointB") {
       playerB += 1;
+	  pointB.textContent = playerB;
       console.log("Computer:" + playerB);
     }
-  }
 
-  if (playerA === playerB) {
-    console.log("Draw");
-  } else if (playerA < playerB) {
-    console.log("Computer won");
-  } else if (playerA > playerB) {
-    console.log("You won");
-  }
+    // final score
+    if (playerA === playerB) {
+		console.log("Draw");
+		results.textContent = "Draw";
+	  } else if (playerB === 5) {
+		console.log("Computer won");
+		results.textContent = "Computer won";
+	  } else if (playerA === 5) {
+		console.log("You won");
+		results.textContent = "You won";
+	  }
+  });
+
+  const paperButton = document.getElementById("paper");
+  paperButton.addEventListener("click", function () {
+    playerSelection = "Paper";
+    const computerSelection = getComputerChoice();
+    point = playRound(playerSelection, computerSelection);
+    if (point === "pointA") {
+      playerA += 1;
+	  pointA.textContent = playerA;
+      console.log("player:" + playerA);
+    } else if (point === "pointB") {
+      playerB += 1;
+	  pointB.textContent = playerB;
+      console.log("Computer:" + playerB);
+    }
+    // final score
+    if (playerA === playerB) {
+		console.log("Draw");
+		results.textContent = "Draw";
+	  } else if (playerB === 5) {
+		console.log("Computer won");
+		results.textContent = "Computer won";
+	  } else if (playerA === 5) {
+		console.log("You won");
+		results.textContent = "You won";
+	  }
+  });
+
+  const scissorsButton = document.getElementById("scissors");
+  scissorsButton.addEventListener("click", function () {
+    playerSelection = "Scissors";
+    const computerSelection = getComputerChoice();
+    point = playRound(playerSelection, computerSelection);
+    // point increasing
+    if (point === "pointA") {
+      playerA += 1;
+	  pointA.textContent = playerA;
+      console.log("player:" + playerA);
+    } else if (point === "pointB") {
+      playerB += 1;
+	  pointB.textContent = playerB;
+      console.log("Computer:" + playerB);
+    }
+
+    // final score
+    if (playerA === playerB) {
+      console.log("Draw");
+	  results.textContent = "Draw";
+    } else if (playerB === 5) {
+      console.log("Computer won");
+	  results.textContent = "Computer won";
+    } else if (playerA === 5) {
+      console.log("You won");
+	  results.textContent = "You won";
+    }
+  });
 }
 
 playGame();
